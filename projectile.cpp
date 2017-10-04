@@ -8,9 +8,9 @@ const double q = 1; //  in C - added
 const double w = 2 // in s^-1 - added
 const double Eo = 1 // in V m^-1 - added
 
-
-
+//removed
 //auto force(TState s) { return VecR2<double>{0, -m * g}; }
+
 // Added
 auto force(TState s) {return q * VecR3<double>{cos(k*z-w*t), sin(k*z-w*t), 0}; }
 
@@ -23,10 +23,13 @@ auto euler_step(TState s, VecR3<double> accel) {
   return next;
 }
 
-// added,, not sure
-auto verlet_algorithm(TState s, VecR3<double) accel) {
+//for the verlet step - added
+auto verlet_step(TState s, VecR3<double> accel){
   TState next;
-  ne
+  next.t = s.t + dt;
+  next.position = s.position + (s.velocity * dt);
+  next.velocity = s.velocity + (accel * dt);
+  return next;
 }
 
 // not yet touched
