@@ -8,15 +8,11 @@ const double q = 1; //  in C - added
 const double w = 2 // in s^-1 - added
 const double Eo = 1 // in V m^-1 - added
 
-// Added
-auto electric_field(TState s) {
- double E = (Eo/sqrt(2)) 
-  return E;
-}
+
 
 //auto force(TState s) { return VecR2<double>{0, -m * g}; }
 // Added
-auto force(TState s) {return VecR3<double>{q * E}; }
+auto force(TState s) {return q * VecR3<double>{cos(k*z-w*t), sin(k*z-w*t), 0}; }
 
 // changed from VecR2
 auto euler_step(TState s, VecR3<double> accel) { 
