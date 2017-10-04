@@ -14,7 +14,7 @@ const double Eo = 1 // in V m^-1 - added
 // Added
 auto force(TState s) {return q * VecR3<double>{cos(k*z-w*t), sin(k*z-w*t), 0}; }
 
-// changed from VecR2
+// changed from VecR2 -- Will not use this -- use Verlet instead.
 auto euler_step(TState s, VecR3<double> accel) { 
   TState next;
   next.t = s.t + dt;
@@ -36,7 +36,7 @@ void n_steps(unsigned n, TState state0) {
     return;
   else {
     auto state = state0;
-    for (unsigned k = 0; k < n; ++k) {
+    for (unsigned j = 0; j < n; ++j) {
       state = euler_step(state, force(state) / m);
       print_tstate(state);
     }
